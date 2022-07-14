@@ -84,12 +84,15 @@ const game = (() => {
     }
 
     function checkWinner() {
+        if (!gameBoard.getGB().includes("")) {
+            gameBoard.removeListeners();
+            text.textContent = "It's a tie!";
+        }
         winningCells.forEach((item) => {
             if (gameBoard.getGB()[item[0]] == this.active.char && gameBoard.getGB()[item[1]] == this.active.char && gameBoard.getGB()[item[2]] == this.active.char) {
                 gameBoard.removeListeners();
                 text.textContent = "Player " + this.active.playerNum + " wins!";
-            }
-            
+            } 
         })
 
     }
